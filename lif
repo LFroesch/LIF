@@ -4,20 +4,28 @@
 
 COMMAND_DIR="$HOME/LIF/lif_commands"
 
-if [ -n "$2" ] && [ -f "$COMMAND_DIR/$1/$2.md" ]; then
+if [ -n "$2" ]; then 
+    if [ -f "$COMMAND_DIR/$1/$2.md" ]; then
     # Handles subcommand, e.g., `lif git init`
-    cat "$COMMAND_DIR/$1/$2.md"
-    echo ""
-elif [ -f "$COMMAND_DIR/$1.md" ]; then
-    # Handles main command, e.g., `lif git`
-    cat "$COMMAND_DIR/$1.md"
-    echo ""
-elif [ -f "$COMMAND_DIR/$1/$1.md" ]; then
-    # Handles the situation where you're looking for $1/$1, e.g., `lif git`
-    cat "$COMMAND_DIR/$1/$1.md"
-    echo ""
+        cat "$COMMAND_DIR/$1/$2.md"
+        echo ""
+    else
+        echo "Usage: lif [git|go|fp|data_structures|...]"
+        echo "- for help:  lif help"
+        echo "- for index: lif index"
+    fi
 else
-    echo "Usage: lif [git|go|fp|data_structures|...]"
-    echo "- for help:  lif help"
-    echo "- for index: lif index"
+    if [ -f "$COMMAND_DIR/$1.md" ]; then
+    # Handles main command, e.g., `lif git`
+        cat "$COMMAND_DIR/$1.md"
+        echo ""
+    elif [ -f "$COMMAND_DIR/$1/$1.md" ]; then
+    # Handles the situation where you're looking for $1/$1, e.g., `lif git`
+        cat "$COMMAND_DIR/$1/$1.md"
+        echo ""
+    else
+        echo "Usage: lif [git|go|fp|data_structures|...]"
+        echo "- for help:  lif help"
+        echo "- for index: lif index"
+    fi
 fi
