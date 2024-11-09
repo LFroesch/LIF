@@ -4,4 +4,5 @@
 - Backup projects and obsidian
 - Check for updates
 - Clean Notes
-- Concept Practice
+- Concept Practice / Daily Problems
+- Check Streak
